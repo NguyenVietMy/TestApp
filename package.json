@@ -1,0 +1,18 @@
+{
+  "name": "gym-power-ecommerce",
+  "version": "1.0.0",
+  "description": "Premium gym supplements and merchandise ecommerce platform",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "set PORT=5001&& node backend/server.js",
+    "client": "set PORT=3008&& npm start --prefix frontend",
+    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend"
+  },
+  "keywords": ["gym", "supplements", "ecommerce", "fitness"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
