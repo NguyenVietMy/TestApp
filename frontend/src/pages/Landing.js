@@ -2,21 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Landing.css';
+import HeroSection from '../components/HeroSection';
 
 const Landing = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // Check if we're on mobile to adjust background attachment
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,48 +23,10 @@ const Landing = () => {
     fetchProducts();
   }, []);
 
-  // Hero background style with images
-  const heroStyle = {
-    background: `
-      linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 26, 0.75) 50%, rgba(10, 10, 10, 0.85) 100%),
-      url(${process.env.PUBLIC_URL}/images/hero-merchandise.jpg),
-      url(${process.env.PUBLIC_URL}/images/hero-bodybuilder.jpg),
-      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)
-    `,
-    backgroundSize: 'cover, cover, cover, cover',
-    backgroundPosition: 'center, center right, center left, center',
-    backgroundBlendMode: 'normal, overlay, overlay, normal',
-    backgroundAttachment: isMobile ? 'scroll' : 'fixed'
-  };
-
   return (
     <div className="landing">
       {/* Hero Section */}
-      <section className="hero" style={heroStyle}>
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1 className="hero-title">
-              <span className="title-line">FUEL YOUR</span>
-              <span className="title-line highlight">POWER</span>
-            </h1>
-            <p className="hero-subtitle">
-              Premium supplements and gear for the ultimate athlete
-            </p>
-            <div className="hero-buttons">
-              <Link to="/products" className="btn btn-primary">
-                SHOP NOW
-              </Link>
-              <Link to="/products?category=supplements" className="btn btn-secondary">
-                EXPLORE SUPPLEMENTS
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="hero-scroll">
-          <div className="scroll-indicator"></div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Features Section */}
       <section className="features">
