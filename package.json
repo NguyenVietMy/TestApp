@@ -6,13 +6,27 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "set PORT=5001&& node backend/server.js",
     "client": "set PORT=3008&& npm start --prefix frontend",
-    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend"
+    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
+    "test": "jest"
   },
   "keywords": ["gym", "supplements", "ecommerce", "fitness"],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.23.0",
+    "@babel/preset-typescript": "^7.23.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "babel-jest": "^29.7.0",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
 
